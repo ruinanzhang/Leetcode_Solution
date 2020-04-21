@@ -1,3 +1,4 @@
+# Tag : Binary Search Tree
 # 54. Is Binary Search Tree Or Not
 
 # Determine if a given binary tree is binary search tree.
