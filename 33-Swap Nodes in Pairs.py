@@ -40,27 +40,25 @@ class Solution:
 
 #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 # Better solution!!! 
-        
-class Solution {
-    public ListNode swapPairs(ListNode head) {
+class Solution(object):
+    def swapPairs(self, head: ListNode) -> ListNode:
+        """
+        :type head: ListNode
+        :rtype: ListNode
+        """
 
-        # // If the list has no node or has only one node left.
-        if ((head == null) || (head.next == null)) {
-            return head;
-        }
+        # If the list has no node or has only one node left.
+        if not head or not head.next:
+            return head
 
-        # // Nodes to be swapped
-        ListNode firstNode = head;
-        ListNode secondNode = head.next;
+        # Nodes to be swapped
+        first_node = head
+        second_node = head.next
 
-        # // Swapping
-        firstNode.next  = swapPairs(secondNode.next);
-        secondNode.next = firstNode;
+        # Swapping
+        first_node.next  = self.swapPairs(second_node.next)
+        second_node.next = first_node
 
-        # // Now the head is the second node
-        return secondNode;
-    }
-}      
-        
-        
+        # Now the head is the second node
+        return second_node
         
