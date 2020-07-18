@@ -1,5 +1,5 @@
-# Tag: Monotonic Stack ❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️
-# 907. Sum of Subarray Minimums
+# Tag: String
+# License Key Formatting
 # -----------------------------------------------------------------------------------
 # Description:
 # You are given a license key represented as a string S which consists only alphanumeric 
