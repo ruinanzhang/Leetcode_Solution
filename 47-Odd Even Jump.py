@@ -36,80 +36,80 @@
 # 如果是奇数次jump -＞ 下一个数是比curr num 大最小的数
 # 如果是偶数次jump -＞ 下一个数是比curr num 小最大的数
 #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-class Solution:
-    def oddEvenJumps(self, A: List[int]) -> int:
-        count = 1
-        n = len(A)-1
-        hashmap_odd = {x:[]for x in range(n)}
-        hashmap_even = {x:[]for x in range(n)}
-#       Starting from index A[0] to index A[n-1]
-#       For every starting index, always start from 1st jump
-        # 在想可以搞个hashmap 然后，把每个数能不能reach end 都存起来
-        def searchSmallest(num,A_StoL):
-            for i in range(len(A_StoL)):
-#               Return 第一个比num大的数，因l是从小到大排序
-                if A_StoL[i] > num:
-                    return A_StoL[i]
-        def searchLargest(num):
-            for i in range(len(A_LtoS)):
-#               Return 第一个比num小的数，因l是从大到小排序
-                if A_LtoS < num:
-                    return A_LtoS[i]
-        def canreach(ind,jump):
-            num = A[ind]
-            sub= A[ind+1:]
-            if not sub:
-                return 
-            sub.sort()
-#           如果是odd jump ->找比num大的最小的数
-            if jump %2 != 0:
-                if hashmap_odd[ind]:
-                    return hashmap_odd[ind]
-                else:
-                    if num < sub[-1] :
-                        next_number = searchSmallest(num,sub)
-                        hashmap_odd[ind].append(A.index(next_number))
-                        hashmap_odd[ind].append(canreach(A.index(next_number),jump+1))
-                        hashmap_even[ind].append(None)
-                    else:
-                        return
-            #如果是even jump->找比num小最大的数
-            if jump %2 == 0:
-                if hashmap_even[ind]:
-                    return hashmap_even[ind]
-                else:
-                    if num > sub[0]:
-                        next_number = searchSmallest(num,sub[::-1])
-                        hashmap_even[ind].append(A.index(next_number))
-                        hashmap_even[ind].append(canreach(A.index(next_number),jump+1))
-                    else:
-                        hashmap_even[ind].append(None)
-                        return 
+# class Solution:
+#     def oddEvenJumps(self, A: List[int]) -> int:
+#         count = 1
+#         n = len(A)-1
+#         hashmap_odd = {x:[]for x in range(n)}
+#         hashmap_even = {x:[]for x in range(n)}
+# #       Starting from index A[0] to index A[n-1]
+# #       For every starting index, always start from 1st jump
+#         # 在想可以搞个hashmap 然后，把每个数能不能reach end 都存起来
+#         def searchSmallest(num,A_StoL):
+#             for i in range(len(A_StoL)):
+# #               Return 第一个比num大的数，因l是从小到大排序
+#                 if A_StoL[i] > num:
+#                     return A_StoL[i]
+#         def searchLargest(num):
+#             for i in range(len(A_LtoS)):
+# #               Return 第一个比num小的数，因l是从大到小排序
+#                 if A_LtoS < num:
+#                     return A_LtoS[i]
+#         def canreach(ind,jump):
+#             num = A[ind]
+#             sub= A[ind+1:]
+#             if not sub:
+#                 return 
+#             sub.sort()
+# #           如果是odd jump ->找比num大的最小的数
+#             if jump %2 != 0:
+#                 if hashmap_odd[ind]:
+#                     return hashmap_odd[ind]
+#                 else:
+#                     if num < sub[-1] :
+#                         next_number = searchSmallest(num,sub)
+#                         hashmap_odd[ind].append(A.index(next_number))
+#                         hashmap_odd[ind].append(canreach(A.index(next_number),jump+1))
+#                         hashmap_even[ind].append(None)
+#                     else:
+#                         return
+#             #如果是even jump->找比num小最大的数
+#             if jump %2 == 0:
+#                 if hashmap_even[ind]:
+#                     return hashmap_even[ind]
+#                 else:
+#                     if num > sub[0]:
+#                         next_number = searchSmallest(num,sub[::-1])
+#                         hashmap_even[ind].append(A.index(next_number))
+#                         hashmap_even[ind].append(canreach(A.index(next_number),jump+1))
+#                     else:
+#                         hashmap_even[ind].append(None)
+#                         return 
             
             
-#       一直loop直到填满了hashmap
-        for i in range(n):
-            jump = 1
-            canreach(i,jump)
-        ans = []
-        for i in range(n):
-            res = []
-            jump = 1
-            while jump < n:
-                if jump % 2 !=0: #odd
-                    if not hashmap_odd[i][0]:
-                        break
-                    elif hashmap_odd[i][0]:
-                        res.append(hashmap_odd[i][0])
-                        jump +=1
-                elif jump % 2 ==0: #even
-                    if not hashmap_even[i][0]:
-                        break
-                    elif hashmap_even[i][0]:
-                        res.append(hashmap_even[i][0])
-                        jump +=1
-            ans.append(res)
-        for item in ans:
-            if n in item:
-                count +=1
-        return hashmap_odd
+# #       一直loop直到填满了hashmap
+#         for i in range(n):
+#             jump = 1
+#             canreach(i,jump)
+#         ans = []
+#         for i in range(n):
+#             res = []
+#             jump = 1
+#             while jump < n:
+#                 if jump % 2 !=0: #odd
+#                     if not hashmap_odd[i][0]:
+#                         break
+#                     elif hashmap_odd[i][0]:
+#                         res.append(hashmap_odd[i][0])
+#                         jump +=1
+#                 elif jump % 2 ==0: #even
+#                     if not hashmap_even[i][0]:
+#                         break
+#                     elif hashmap_even[i][0]:
+#                         res.append(hashmap_even[i][0])
+#                         jump +=1
+#             ans.append(res)
+#         for item in ans:
+#             if n in item:
+#                 count +=1
+#         return hashmap_odd
