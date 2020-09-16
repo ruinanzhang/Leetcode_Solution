@@ -37,3 +37,25 @@ class Solution:
             left +=1
             right -=1
         return res
+#4 condense list:
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def deleteDuplicates(self, head: ListNode) -> ListNode:
+        if not head or not head.next:
+            return
+        cur = head
+        values = set()
+        values.add(cur.val)
+        while cur.next:
+            if cur.next.val not in values:
+                values.add(cur.next.val)
+                cur = cur.next
+            else:
+                cur.next = cur.next.next
+            
+        return head
+                
