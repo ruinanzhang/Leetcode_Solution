@@ -73,4 +73,4 @@ print(max_beauty)
 
 #Mth 
 
-if int(s[i-1:i+1]) <=26 and int(s[i-1:i+1])>=10 ：
+# if int(s[i-1:i+1]) <=26 and int(s[i-1:i+1])>=1
