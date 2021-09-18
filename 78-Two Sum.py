@@ -1,5 +1,6 @@
 # Tag: HashTable
-# 1. Two Sum
+# 二刷完成✅
+# 1. Two Sumer
 # -----------------------------------------------------------------------------------
 # Description:
 # Given an array of integers, return indices of the two numbers such that they
